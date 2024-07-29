@@ -17,19 +17,19 @@ int ft_color(int n)
 int choose_color(int cnt)
 {
 	if(cnt == 0)
-		return (0x64CD3C);
+		return (0xCD0000);
 	else if(cnt == 1)
-		return (0x6ED746);
+		return (0xCD3C3C);
 	else if(cnt == 2)
-		return (0x78E150);
+		return (0xCD4646);
 	else if(cnt == 3)
-		return (0x82EB5A);
+		return (0xCD5050);
 	else if(cnt == 4)
-		return (0x8CF064);
+		return (0xD25A5A);
 	else if(cnt == 5)
-		return (0x84FB84);
+		return (0xEB6464);
 	else if(cnt == 6)
-		return (0x89FB89);
+		return (0xF06E6E);
 	else
-		return (0x8EFB8E);
+		return (0xF57878);
 }

@@ -6,6 +6,7 @@ SRC = src/fractol.c \
 src/mandelbrot.c \
 src/my_mlx.c \
 src/utils.c \
+src/julia.c \
 
 MLX = ./minilibx-linux
 

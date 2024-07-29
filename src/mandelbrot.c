@@ -41,7 +41,7 @@ int is_convergence(double a, double b, t_data *val)
     c.real = val->left + a * (val->xlen) / XLEN;
     c.im = val->top + b * (val->ylen) / YLEN;
     n = 0;
-    while ((z.real * z.real) + (z.im * z.im) < 4 && n < 2048)
+    while ((z.real * z.real) + (z.im * z.im) < 4 && n < MAX)
     {
         temp = 2 * z.real * z.im;
         z.real = (z.real * z.real) - (z.im * z.im) + c.real;
@@ -56,13 +56,11 @@ void mandelbort(t_data *data)
     double a;
     double b;
     int n;
-    // int color;
     int color2;
 
 	mlx_clear_window(data->mlx, data->win);
     a = 0;
     n = 0;
-    // color = 0x0000FF;
     color2 = 0xFFFFFF;
     while (a < XLEN)
     {
@@ -70,17 +68,15 @@ void mandelbort(t_data *data)
         while (b < YLEN)
         {
             n = is_convergence(a, b, data);
-            if (n == 2048)
+            if (n == MAX)
                 my_mlx_pixel_put(data, a, b, color2);
             else
 			{
-				ft_printf("%d ", ft_color(n));
                 my_mlx_pixel_put(data, a, b, ft_color(n));
 			}
             b++;
         }
         a++;
-		ft_printf("\n");
     }
     mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 }

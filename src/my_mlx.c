@@ -12,7 +12,7 @@ int	mouse_hook(int mouse, int x, int y, t_data *data)
 {
 	zoom(data, mouse, x, y);
 	mandelbort(data);
-	ft_printf("mouse hook and I use mouse hook %d %d %d %d\n", mouse, (int)data->left, x, y);
+	// ft_printf("mouse hook and I use mouse hook %d %d %d %d\n", mouse, (int)data->left, x, y);
 	return (mouse);
 }
 
@@ -24,7 +24,7 @@ int key_hook(int keycode, t_data *data)
 		ft_printf("Good bye my friends\n");
 		exit (0);
 	}
-	ft_printf("key hook and I use mouse hook %d %d\n", keycode, (int)data->left);
+	// ft_printf("key hook and I use mouse hook %d %d\n", keycode, (int)data->left);
 	return (1);
 }
 

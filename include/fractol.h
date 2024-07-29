@@ -18,7 +18,9 @@
 #  define WH_CLK 2
 #  define ESC 65307
 #  define ON_DESTROY 17
-#  define TWOPE 256
+#  define TWOPE 16
+#  define MAX 128
+
 // #  define C_REAL -0.5
 // #  define C_IM 0
 #  define FACTOR 1.1
@@ -34,6 +36,8 @@ typedef struct  s_data
 	double xlen;
 	double top;
 	double ylen;
+	double juli_cre;
+	double juli_cim;
 	int mouse;
 	void *mlx;
 	void *win;
@@ -63,7 +67,7 @@ typedef struct  s_dot
 
 //mt_mlx.c
 // int	mouse_hook(int mouse);
-int	mouse_hook(int mouse, int x, int y, t_data *data) ;
+int	mouse_hook(int mouse, int x, int y, t_data *data);
 void my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int key_hook(int keycode, t_data *data);
 int ftclose(t_data *data);
@@ -77,5 +81,10 @@ void zoom(t_data *val, int mouse, int x, int y);
 //utils.c
 int ft_color(int n);
 int choose_color(int cnt);
+//julia.c
+void init_mlx2(t_data *data);
+void julia(t_data *data);
+int is_convergence_2(double a, double b, t_data *val);
+int	mouse_hook2(int mouse, int x, int y, t_data *data);
 
 # endif
