@@ -5,6 +5,7 @@ RM = rm -rf
 SRC = src/fractol.c \
 src/mandelbrot.c \
 src/my_mlx.c \
+src/utils.c \
 
 MLX = ./minilibx-linux
 

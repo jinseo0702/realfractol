@@ -1,14 +1,35 @@
 #include "../include/fractol.h"
 
-void init_complex(t_complex *val)
+void init_complex(t_data *val)
 {
     val->left = -3;
     val->xlen = 6;
     val->top = 2;
     val->ylen = -4;
+    val->mouse = 0;
 }
 
-int is_convergence(double a, double b, t_complex *val)
+void zoom(t_data *val, int mouse, int x, int y)
+{
+	if (mouse == WH_CLK)
+		init_complex(val);
+	double real = val->left + x * (val->xlen) / XLEN;
+    double im = val->top + y * (val->ylen) / YLEN;
+	if (mouse == WH_UP)
+	{
+		val->xlen /= FACTOR;
+		val->ylen /= FACTOR;
+	}
+	else if(mouse == WH_DN)
+	{
+		val->xlen *= FACTOR;
+		val->ylen *= FACTOR;
+	}
+	val->left = real - val->xlen / 2;
+    val->top = im - val->ylen / 2;
+}
+
+int is_convergence(double a, double b, t_data *val)
 {
     int n;
     double temp;
@@ -30,33 +51,36 @@ int is_convergence(double a, double b, t_complex *val)
     return (n);
 }
 
-void mandelbort(t_mlx *mlx, t_data *data)
+void mandelbort(t_data *data)
 {
     double a;
     double b;
     int n;
-    int color;
+    // int color;
     int color2;
-    t_complex val;
 
-    init_complex(&val);
+	mlx_clear_window(data->mlx, data->win);
     a = 0;
     n = 0;
-    color = 0xFFFFFF;
-    color2 = 0x000000;
+    // color = 0x0000FF;
+    color2 = 0xFFFFFF;
     while (a < XLEN)
     {
         b = 0;
         while (b < YLEN)
         {
-            n = is_convergence(a, b, &val);
+            n = is_convergence(a, b, data);
             if (n == 2048)
                 my_mlx_pixel_put(data, a, b, color2);
             else
-                my_mlx_pixel_put(data, a, b, color);
+			{
+				ft_printf("%d ", ft_color(n));
+                my_mlx_pixel_put(data, a, b, ft_color(n));
+			}
             b++;
         }
         a++;
+		ft_printf("\n");
     }
-    mlx_put_image_to_window(mlx->mlx, mlx->win, data->img, 0, 0);
+    mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 }
