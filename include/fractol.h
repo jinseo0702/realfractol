@@ -65,8 +65,15 @@ typedef struct  s_dot
     double im;
 }   t_dot;
 
-//mt_mlx.c
-// int	mouse_hook(int mouse);
+//fractal.c
+void print_list(void);
+double check_julia(char *ar);
+//ft_atof_julia.c
+double	ft_atof_julia(char *nptr);
+void print_complex(void);
+int is_minus(char **nptr);
+void is_inrange(double num);
+//my_mlx.c
 int	mouse_hook(int mouse, int x, int y, t_data *data);
 void my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int key_hook(int keycode, t_data *data);

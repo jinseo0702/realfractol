@@ -7,6 +7,7 @@ src/mandelbrot.c \
 src/my_mlx.c \
 src/utils.c \
 src/julia.c \
+src/ft_atof_julia.c \
 
 MLX = ./minilibx-linux
 
